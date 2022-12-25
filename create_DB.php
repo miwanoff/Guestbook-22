@@ -6,7 +6,7 @@ try {
     $conn = new mysqli(SERVERNAME, USERNAME, PASSWORD);
 // Connection test
     if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+        throw new Exception("Connection failed: " . $conn->connect_error);
     }
 // Database creation
     $sql = "CREATE DATABASE IF NOT EXISTS " . DBNAME . " CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci";
