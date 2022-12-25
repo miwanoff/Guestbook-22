@@ -9,9 +9,9 @@ try {
         die("Connection failed: " . $conn->connect_error);
     }
 // Database creation
-    $sql = "CREATE DATABASE " . DBNAME . " CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci";
+    $sql = "CREATE DATABASE IF NOT EXISTS " . DBNAME . " CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci";
     if (!$conn->query($sql)) {
-        throw new Exception('Error creating database: ['.$conn->error.']');
+        throw new Exception('Error creating database: [' . $conn->error . ']');
     } else {
         echo "Database created successfully";
     }
