@@ -15,7 +15,7 @@ try {
     if (!$conn->query("INSERT INTO Users (log, pas) VALUES ('pit', '123')")) {
         throw new Exception('Error creation table  Users: [' . $conn->error . ']');
     }
-
+    // INSERT INTO `gbooktable` (`id`, `username`, `date`, `message`) VALUES (NULL, 'admin', NULL, 'Hello');
     echo " Users and GBookTable tables created successfully";
     $conn->close();
 
