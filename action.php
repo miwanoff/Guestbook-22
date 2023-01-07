@@ -37,6 +37,36 @@ function check_autorize($log, $pas) {
 	}
 }
 
+function check_log($log) {
+	global $conn;
+	try {
+		$sql = "SELECT log FROM Users WHERE log = '" . $log . "'";
+		$result = $conn->query($sql);
+		$n = $result->num_rows; 
+		if ($n != 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	catch (Exception $e) {
+		$e->getMessage();
+	}
+}
+
+function registration($log, $pas) {
+	global $conn;
+	$sql = "INSERT INTO Users (log, pas) VALUES (" . "'" . $log . "', " . "'" . $pas . "')";
+	if (!$conn->query($sql)) {
+		return false;
+	}
+	else {
+		$_SESSION ['user_login'] = $log; 
+		return true;
+	}
+}
+
 function logout() { 
 	unset($_SESSION ['user_login']);
 	session_unset();
