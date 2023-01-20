@@ -12,7 +12,7 @@ if (isset($_SESSION['user_login'])) {
     echo "<a href='registration.php'>Зареєструватись</a><br/>";
 }
 $out = out(5);
-print_r($out);
+// print_r($out);
 if (count($out) > 0) {
     foreach ($out as $row) {
 
